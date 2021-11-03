@@ -1,17 +1,21 @@
 import './ExpenseItem.css';
 
-const ExpenseItem = () => {
-    const expenseDate = new Date(2021, 11, 4);
-    const expenseTitle = "Groceries";
-    const expenseAmount = 300.00;
-    
+const ExpenseItem = (props) => {
+    const day = props.date.toLocaleString('en-nz', {day: '2-digit'});
+    const month = props.date.toLocaleString('en-nz', {month: 'long'});
+    const year = props.date.getFullYear();
+
     return (
 
         <div className="expense-item">
-            <div>{expenseDate.toISOString()}</div>
+            <div>
+                <div>{day}</div>
+                <div>{month}</div>
+                <div>{year}</div>
+            </div>
             <div className="expense-item__description">
-                <h2>{expenseTitle}</h2>
-                <div className="expense-item__price">{expenseAmount}</div>
+                <h2>{props.title}</h2>
+                <div className="expense-item__price">{props.amount}</div>
             </div>
         </div>
     )
